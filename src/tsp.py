@@ -25,7 +25,7 @@ def main():
     for line in fIn:
         currentLine = line.split(",")
         if flag:
-            edges.append([int(currentLine[0], int(currentLine[1]), int(currentLine[2]))])
+            edges.append([int(currentLine[0]), int(currentLine[1]), int(currentLine[2])])
             if int(currentLine[0]) not in nodes:
                 nodes.append(int(currentLine[0]))
             if int(currentLine[1]) not in nodes:
