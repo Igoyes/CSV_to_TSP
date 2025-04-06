@@ -13,7 +13,9 @@ def main():
         print("File not found\n")
         return 1
     try:
-        fOut = open("output.tsp", "w")
+        buffer = sys.argv[2]
+        buffer = buffer + ".tsp"
+        fOut = open(buffer, "w")
     except:
         print("Can't create output file\n")
         return 2
