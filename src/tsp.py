@@ -49,7 +49,7 @@ def main():
             mat.append(vett)
     else:
         print("Experimental Y/N not valid")
-        return 1
+        return 3
     print(f"NAME: {sys.argv[2]}", file=fOut)
     print(f"COMMENT: //{sys.argv[3]}", file=fOut)
     print("TYPE: TSP", file=fOut)
