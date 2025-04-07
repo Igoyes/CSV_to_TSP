@@ -4,7 +4,12 @@ import sys
 def main():
     if sys.argv.__len__ != 5:
         print("Usage: tsp.py (input file) (output file) (Comment) (Experimental Y/N)")
-    print("Insert input file name: ")
+    if sys.argv[1].endswith(".csv") == False:
+        print("Input file must be a .csv file")
+        return 3
+    if sys.argv[4] != "Y" and sys.argv[4] != "N":
+        print("Experimental flag must be Y or N")
+        return 4
     buffer = sys.argv[1]
     buffer = "./" + buffer
     try:
@@ -18,6 +23,7 @@ def main():
         fOut = open(buffer, "w")
     except:
         print("Can't create output file\n")
+        fIn.close()
         return 2
     nodes = []
     edges = []
@@ -41,9 +47,6 @@ def main():
             for j in range(matSize):
                 vett.append(base)
             mat.append(vett)
-    else:
-        print("Experimental Y/N not valid")
-        return 3
     print(f"NAME: {sys.argv[2]}", file=fOut)
     print(f"COMMENT: //{sys.argv[3]}", file=fOut)
     print("TYPE: TSP", file=fOut)
