@@ -34,13 +34,7 @@ def main():
 
     matSize = len(nodes)
     mat = []
-    if sys.argv[4] == "Y":
-        for i in range(matSize):
-            vett = []
-            for j in range(matSize):
-                vett.append(" ")
-            mat.append(vett)
-    elif sys.argv[4] == "N":
+    if sys.argv[4] == "N":
         base = max(edges, key=lambda x: x[2])*7000
         for i in range(matSize):
             vett = []
@@ -55,12 +49,17 @@ def main():
     print("TYPE: TSP", file=fOut)
     print(f"DIMENSION: {len(nodes)}", file=fOut)
     print("EDGE_WEIGHT_TYPE: EXPLICIT", file=fOut)
-    print("EDGE_WEIGHT_FORMAT: FULL_MATRIX", file=fOut)
-    print("EDGE_WEIGHT_SECTION:", file=fOut)
-    for i in range(len(nodes)):
-        for j in range(len(nodes)-1):
-            print(f"{mat[i][j]}", end=" ", file=fOut)
-        print(f"{mat[i][len(nodes)-1]}", file=fOut)
+    if sys.argv[4] == "Y":
+        print("EDGE_DATA_FORMAT: EDGE_LIST", file=fOut)
+        for i in range(len(edges)):
+            print(f"{edges[i][0]} {edges[i][1]} {edges[i][2]}", file=fOut)
+    elif sys.argv[4] == "N":
+        print("EDGE_WEIGHT_FORMAT: FULL_MATRIX", file=fOut)
+        print("EDGE_WEIGHT_SECTION:", file=fOut)
+        for i in range(len(nodes)):
+            for j in range(len(nodes)-1):
+                print(f"{mat[i][j]}", end=" ", file=fOut)
+            print(f"{mat[i][len(nodes)-1]}", file=fOut)
     fOut.close()
     fIn.close()
     return 0
