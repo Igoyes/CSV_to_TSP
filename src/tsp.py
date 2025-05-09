@@ -11,7 +11,6 @@ def main():
         print("Experimental flag must be Y or N")
         return 4
     buffer = sys.argv[1]
-    buffer = "./" + buffer
     try:
         fIn = open(buffer, "r")
     except:
@@ -19,7 +18,6 @@ def main():
         return 1
     try:
         buffer = sys.argv[2]
-        buffer = buffer + ".tsp"
         fOut = open(buffer, "w")
     except:
         print("Can't create output file\n")
